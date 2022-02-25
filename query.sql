@@ -133,10 +133,16 @@ JOIN `students`
 GROUP BY exams.date
 
 
+SELECT `exam_id`, ROUND(avg('VOTE')) as `media_voti`
+FROM `exam_student`
+GROUP BY `exam_id`
+HAVING `media_voti` > 20
+
+
 --4 
 
 SELECT DISTINCT  COUNT(department_id) AS 'Corsi di Laurea', departments.name
 FROM `degrees`
 JOIN `departments`
-	ON `departments`.`id` = `degrees`.`department_id`
-GROUP BY departments.name
+ON `departments`.`id` = `degrees`.`department_id`
+GROUP BY departments.name 
